@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def superadmin?
-    return true if twitter == "jamescmartinez"
+    return true if twitter == "jamescmartinez" || Rails.application.credentials[:superadmin]
 
     false
   end
