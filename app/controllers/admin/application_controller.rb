@@ -1,6 +1,7 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
     include Authenticable
+    include Administrate::Punditize
 
     before_action :authenticate_admin
 
