@@ -8,6 +8,7 @@ gem "factory_bot_rails"
 gem "friendly_id"
 gem "httparty"
 gem "icalendar"
+gem "image_processing"
 gem "jbuilder"
 gem "meta-tags"
 gem "mini_racer", platforms: :ruby
