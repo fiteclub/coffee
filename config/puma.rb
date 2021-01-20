@@ -36,3 +36,18 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+rackup      DefaultRackup
+port        3001
+environment ENV['RACK_ENV'] || 'production'
+
+if ENV['RACK_ENV'] == 'development'
+  localhost_key = "#{File.join('config', 'local-certs', 'localhost-key.pem')}"
+  localhost_crt = "#{File.join('config', 'local-certs', 'localhost.pem')}"
+  # To be able to use rake etc
+  ssl_bind '0.0.0.0', 3000, {
+    key: localhost_key,
+    cert: localhost_crt,
+    verify_mode: 'none'
+  }
+end
