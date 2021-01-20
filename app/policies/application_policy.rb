@@ -7,30 +7,50 @@ class ApplicationPolicy
   end
 
   def index?
+    return true if user.superadmin?
+
     false
   end
 
   def show?
+    return true if user.superadmin?
+
     false
   end
 
   def create?
+    return true if user.superadmin?
+
     false
   end
 
   def new?
+    return true if user.superadmin?
+
     create?
   end
 
   def update?
+    return true if user.superadmin?
+
     false
   end
 
   def edit?
+    return true if user.superadmin?
+
     update?
   end
 
   def destroy?
+    return true if user.superadmin?
+
+    false
+  end
+
+  def superadmin?
+    return true if twitter == "jamescmartinez" || Rails.application.credentials[:superadmin]
+
     false
   end
 
